@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ye Catarina Restaurant – Goa</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1a3a2a;--green-mid:#2a5a3a;--green-light:#e8f2ec;
+  --orange:#d46b2a;--orange-light:#f5e6d8;
+  --cream:#fdf9f4;--warm-white:#fffcf8;
+  --text:#1a1a1a;--text-muted:#6b5e52;--border:#e8ddd4;
+  --gold:#c9963a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:rgba(26,58,42,0.97);backdrop-filter:blur(20px);transition:padding 0.3s;}
+.nav-logo{display:flex;align-items:center;gap:10px;}
+.nav-logo-icon{font-size:28px;}
+.nav-name{font-family:'Fraunces',serif;font-size:20px;font-weight:400;color:var(--cream);letter-spacing:0.02em;line-height:1;}
+.nav-name span{display:block;font-family:'Outfit',sans-serif;font-size:10px;font-weight:300;color:rgba(253,249,244,0.5);letter-spacing:0.2em;text-transform:uppercase;margin-top:2px;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:300;color:rgba(253,249,244,0.7);text-decoration:none;letter-spacing:0.06em;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-reserve{background:var(--orange);color:var(--warm-white);padding:10px 22px;font-size:13px;font-weight:500;text-decoration:none;border-radius:4px;transition:background 0.2s;letter-spacing:0.04em;}
+.nav-reserve:hover{background:#b85a20;}
+
+/* HERO */
+.hero{min-height:100vh;background:var(--green);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 5% 60px;gap:60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:rgba(212,107,42,0.06);clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);}
+.hero::after{content:'🌿';position:absolute;bottom:40px;right:5%;font-size:120px;opacity:0.06;}
+.hero-left{position:relative;z-index:1;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(201,150,58,0.15);border:1px solid rgba(201,150,58,0.3);color:var(--gold);font-size:11px;font-weight:500;padding:6px 14px;border-radius:2px;margin-bottom:28px;letter-spacing:0.12em;text-transform:uppercase;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(48px,6vw,78px);font-weight:300;line-height:1.05;color:var(--cream);margin-bottom:22px;}
+.hero h1 em{font-style:italic;color:var(--gold);display:block;}
+.hero-desc{font-size:16px;font-weight:300;line-height:1.8;color:rgba(253,249,244,0.65);margin-bottom:40px;max-width:460px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;}
+.btn-orange{background:var(--orange);color:var(--warm-white);padding:14px 30px;font-size:13px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:4px;display:inline-flex;align-items:center;gap:10px;transition:all 0.2s;}
+.btn-orange:hover{background:#b85a20;transform:translateY(-1px);}
+.btn-outline-light{background:transparent;color:var(--cream);border:1px solid rgba(253,249,244,0.25);padding:14px 30px;font-size:13px;font-weight:300;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:4px;display:inline-flex;align-items:center;gap:10px;transition:all 0.2s;}
+.btn-outline-light:hover{border-color:var(--gold);color:var(--gold);}
+.hero-info{display:flex;gap:32px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1);}
+.hi-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(253,249,244,0.5);}
+.hi-icon{font-size:16px;}
+
+/* HERO RIGHT */
+.hero-right{position:relative;z-index:1;}
+.menu-preview{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:28px;margin-bottom:16px;}
+.menu-preview h3{font-family:'Fraunces',serif;font-size:13px;font-weight:300;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:18px;}
+.menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.menu-item:last-child{border-bottom:none;padding-bottom:0;}
+.mi-name{font-size:14px;font-weight:400;color:var(--cream);}
+.mi-desc{font-size:12px;color:rgba(253,249,244,0.4);margin-top:3px;}
+.mi-price{font-family:'Fraunces',serif;font-size:15px;color:var(--gold);white-space:nowrap;margin-left:16px;}
+.timing-card{background:rgba(201,150,58,0.1);border:1px solid rgba(201,150,58,0.2);border-radius:8px;padding:20px 24px;display:flex;justify-content:space-between;align-items:center;}
+.tc-left h4{font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.tc-left p{font-size:14px;color:var(--cream);font-weight:300;}
+.open-now{display:inline-flex;align-items:center;gap:6px;background:rgba(42,157,100,0.2);color:#6bcf7f;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;}
+.open-now::before{content:'●';font-size:8px;}
+
+/* MENU */
+#menu{padding:90px 5%;background:var(--cream);}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.section-title{font-family:'Fraunces',serif;font-size:clamp(34px,4vw,52px);font-weight:300;color:var(--green);line-height:1.1;margin-bottom:56px;}
+.section-title em{font-style:italic;color:var(--orange);}
+.menu-tabs{display:flex;gap:6px;margin-bottom:36px;flex-wrap:wrap;}
+.mtab{padding:8px 20px;border-radius:20px;border:1px solid var(--border);font-size:13px;font-weight:400;cursor:pointer;background:transparent;color:var(--text-muted);font-family:'Outfit',sans-serif;transition:all 0.2s;}
+.mtab.active{background:var(--green);color:var(--cream);border-color:var(--green);}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);}
+.dish-card{background:var(--warm-white);padding:28px;transition:background 0.2s;position:relative;}
+.dish-card:hover{background:#fff9f4;}
+.dish-badge{position:absolute;top:16px;right:16px;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border-radius:2px;}
+.badge-veg{background:#e8f5e8;color:#2a7a2a;}
+.badge-nonveg{background:#fce8e8;color:#7a2a2a;}
+.badge-special{background:rgba(201,150,58,0.15);color:var(--gold);}
+.dish-icon{font-size:36px;margin-bottom:14px;display:block;}
+.dish-card h3{font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--green);margin-bottom:6px;}
+.dish-card p{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:14px;}
+.dish-price{font-family:'Fraunces',serif;font-size:18px;font-weight:400;color:var(--orange);}
+
+/* REVIEWS */
+#reviews{padding:90px 5%;background:var(--green);}
+#reviews .section-eyebrow{color:var(--gold);}
+#reviews .section-title{color:var(--cream);}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+.rev-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:28px;transition:background 0.2s;}
+.rev-card:hover{background:rgba(255,255,255,0.08);}
+.rev-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px;}
+.rev-text{font-family:'Fraunces',serif;font-style:italic;font-size:16px;font-weight:300;color:rgba(253,249,244,0.8);line-height:1.7;margin-bottom:20px;}
+.rev-author{display:flex;align-items:center;gap:12px;}
+.rev-av{width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--cream);flex-shrink:0;}
+.rev-name{font-size:14px;font-weight:500;color:var(--cream);}
+.rev-sub{font-size:12px;color:rgba(253,249,244,0.4);}
+
+/* ABOUT */
+#about{padding:90px 5%;background:var(--orange-light);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-visual{background:var(--green);border-radius:8px;padding:44px 32px;text-align:center;position:relative;}
+.about-visual::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid rgba(201,150,58,0.3);border-radius:8px;}
+.av-icon{font-size:60px;margin-bottom:16px;display:block;}
+.av-name{font-family:'Fraunces',serif;font-size:22px;font-weight:300;color:var(--cream);margin-bottom:6px;}
+.av-addr{font-size:13px;color:rgba(253,249,244,0.5);line-height:1.7;}
+.av-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+.av-stat{background:rgba(255,255,255,0.06);border-radius:6px;padding:14px;text-align:center;}
+.av-num{font-family:'Fraunces',serif;font-size:26px;font-weight:400;color:var(--gold);}
+.av-label{font-size:11px;color:rgba(253,249,244,0.4);margin-top:2px;}
+.about-content .section-eyebrow{color:var(--orange);}
+.about-content .section-title{color:var(--green);}
+.about-desc{font-size:15px;color:var(--text-muted);line-height:1.9;margin-bottom:32px;font-weight:300;}
+.about-features{display:flex;flex-direction:column;gap:16px;}
+.af-row{display:flex;gap:14px;align-items:flex-start;}
+.af-icon{width:36px;height:36px;border-radius:6px;background:rgba(212,107,42,0.12);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.af-row h4{font-size:14px;font-weight:500;color:var(--green);margin-bottom:2px;}
+.af-row p{font-size:13px;color:var(--text-muted);line-height:1.5;}
+
+/* RESERVE */
+#contact{padding:90px 5%;background:var(--cream);}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start;}
+.contact-info .section-title{margin-bottom:20px;}
+.contact-desc{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:36px;font-weight:300;}
+.contact-items{display:flex;flex-direction:column;gap:18px;}
+.ci-row{display:flex;gap:14px;align-items:flex-start;}
+.ci-icon{width:40px;height:40px;border-radius:6px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.ci-row h4{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:3px;}
+.ci-row p{font-size:14px;color:var(--text);}
+.ci-row a{color:var(--orange);text-decoration:none;}
+.map-ph{height:140px;background:var(--green-light);border-radius:6px;border:1px dashed rgba(26,58,42,0.2);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:13px;margin-top:24px;}
+.reserve-form{background:var(--green);border-radius:8px;padding:40px;}
+.reserve-form h3{font-family:'Fraunces',serif;font-size:28px;font-weight:300;color:var(--cream);margin-bottom:6px;}
+.reserve-form>p{font-size:13px;color:rgba(253,249,244,0.45);margin-bottom:28px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(253,249,244,0.45);margin-bottom:7px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:4px;font-family:'Outfit',sans-serif;font-size:14px;font-weight:300;color:var(--cream);outline:none;transition:border-color 0.2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(253,249,244,0.2);}
+.fg select option{background:#1a3a2a;}
+.fg textarea{height:80px;resize:none;}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-btn{width:100%;background:var(--orange);color:var(--warm-white);padding:14px;border:none;border-radius:4px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:4px;}
+.form-btn:hover{background:#b85a20;}
+.form-note{font-size:11px;color:rgba(253,249,244,0.3);text-align:center;margin-top:10px;}
+
+/* WHATSAPP */
+.wa-btn{position:fixed;bottom:28px;right:28px;z-index:999;background:#25d366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;}
+.wa-btn:hover{transform:scale(1.1);}
+
+/* FOOTER */
+footer{background:var(--green);padding:28px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+footer p{font-size:12px;color:rgba(253,249,244,0.3);}
+footer strong{color:rgba(253,249,244,0.6);}
+.footer-brand{font-family:'Fraunces',serif;font-size:18px;color:rgba(253,249,244,0.5);}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero-left>*{animation:fadeUp 0.6s ease both;}
+.hero-tag{animation-delay:0.05s;}.hero h1{animation-delay:0.15s;}.hero-desc{animation-delay:0.25s;}.hero-actions{animation-delay:0.35s;}.hero-info{animation-delay:0.45s;}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:90px;}
+  .hero-right{display:none;}
+  .nav-links{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:36px;}
+  .about-visual{display:none;}
+  .fg-row{grid-template-columns:1fr;}
+  footer{justify-content:center;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-name">Ye Catarina<span>Authentic Goan Cuisine</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Reserve</a></li>
+  </ul>
+  <a href="#contact" class="nav-reserve">Reserve Table</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Goa's Heritage Restaurant Since 1950</div>
+    <h1>Real Goan Food.<br><em>Real Flavours.</em></h1>
+    <p class="hero-desc">From fiery fish curry to tender pork vindaloo — every dish is made fresh daily with spices sourced directly from local Goan markets. Come taste the real Goa.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-orange">🍽️ Reserve a Table</a>
+      <a href="#menu" class="btn-outline-light">📋 View Menu</a>
+    </div>
+    <div class="hero-info">
+      <div class="hi-item"><span class="hi-icon">⭐</span>4.8 Google Rating</div>
+      <div class="hi-item"><span class="hi-icon">👥</span>500+ Happy Customers</div>
+      <div class="hi-item"><span class="hi-icon">🕐</span>Open Daily</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="menu-preview">
+      <h3>Today's Specials</h3>
+      <div class="menu-item">
+        <div><div class="mi-name">Goan Fish Thali</div><div class="mi-desc">Fresh kingfish in traditional red coconut curry</div></div>
+        <div class="mi-price">₹220</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="mi-name">Beef Tongue Roast</div><div class="mi-desc">Slow cooked in authentic Goan vinegar masala</div></div>
+        <div class="mi-price">₹280</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="mi-name">Prawn a La Plancha</div><div class="mi-desc">Tangy pickled prawn preparation, Goan style</div></div>
+        <div class="mi-price">₹320</div>
+      </div>
+      <div class="menu-item">
+        <div><div class="mi-name">Serradura (dessert)</div><div class="mi-desc">Traditional 7-layer Goan sweet</div></div>
+        <div class="mi-price">₹120</div>
+      </div>
+    </div>
+    <div class="timing-card">
+      <div class="tc-left">
+        <h4>Today's Hours</h4>
+        <p>12:00 PM – 3:30 PM · 7:00 PM – 11:00 PM</p>
+      </div>
+      <div class="open-now">Open Now</div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-eyebrow">What We Serve</div>
+  <h2 class="section-title">Our <em>Signature</em> Dishes</h2>
+  <div class="menu-grid">
+    <div class="dish-card">
+      <span class="badge badge-nonveg dish-badge">Non Veg</span>
+      <span class="dish-icon">🐟</span>
+      <h3>Goan Fish Curry Rice</h3>
+      <p>The soul of Goan cuisine. Fresh catch of the day simmered in coconut milk and Goan spices. Served with steamed rice.</p>
+      <div class="dish-price">₹220</div>
+    </div>
+    <div class="dish-card">
+      <span class="badge badge-nonveg dish-badge">Non Veg</span>
+      <span class="dish-icon">🥩</span>
+      <h3>Pork Vindaloo</h3>
+      <p>Iconic Goan dish — pork marinated in vinegar and fiery red masala. Slow cooked for 4 hours for maximum flavour.</p>
+      <div class="dish-price">₹280</div>
+    </div>
+    <div class="dish-card">
+      <span class="badge badge-special dish-badge">Chef's Special</span>
+      <span class="dish-icon">🍤</span>
+      <h3>Prawn a La Plancha</h3>
+      <p>Juicy prawns stuffed with our secret recheado masala — tangy, spicy and absolutely addictive. Chef's top recommendation.</p>
+      <div class="dish-price">₹350</div>
+    </div>
+    <div class="dish-card">
+      <span class="badge badge-veg dish-badge">Veg</span>
+      <span class="dish-icon">🫘</span>
+      <h3>Goan Dal Tadka</h3>
+      <p>Creamy yellow dal tempered with kokum, curry leaves, and Goan spices. Served with pao or rice. Comfort food at its best.</p>
+      <div class="dish-price">₹160</div>
+    </div>
+    <div class="dish-card">
+      <span class="badge badge-nonveg dish-badge">Non Veg</span>
+      <span class="dish-icon">🍗</span>
+      <h3>Flame Grilled Chicken</h3>
+      <p>Green masala marinated chicken grilled to perfection — a classic Goan street food favourite now served restaurant style.</p>
+      <div class="dish-price">₹260</div>
+    </div>
+    <div class="dish-card">
+      <span class="badge badge-special dish-badge">Dessert</span>
+      <span class="dish-icon">🍮</span>
+      <h3>Bebinca & Dodol</h3>
+      <p>Traditional Goan sweets — 7-layer bebinca baked slow and rich dodol made with coconut and jaggery. Perfect ending.</p>
+      <div class="dish-price">₹120</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-eyebrow">Guest Stories</div>
+  <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+  <div class="reviews-grid">
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Best fish curry rice I've had in Goa — and I've tried many places. The coconut curry was perfectly balanced, not too spicy, not too mild. We came back the next day for lunch again!"</p>
+      <div class="rev-author"><div class="rev-av">RS</div><div><div class="rev-name">Rahul Sharma</div><div class="rev-sub">Google Review · Tourist from Mumbai</div></div></div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Authentic Goan food — the pork vindaloo was exactly how my grandmother used to make it. The ambience is simple but the food more than makes up for it. Highly recommend the Prawn a La Plancha!"</p>
+      <div class="rev-author"><div class="rev-av">PF</div><div><div class="rev-name">Priya Fernandes</div><div class="rev-sub">Google Review · Local Goan</div></div></div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Stumbled upon this place while exploring and what a find! The Flame Grilled Chicken and bebinca were outstanding. Staff was very friendly and welcoming. This is now my go-to restaurant in Goa!"</p>
+      <div class="rev-author"><div class="rev-av">AK</div><div><div class="rev-name">Amit Kumar</div><div class="rev-sub">Google Review · Traveller from Delhi</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <span class="av-icon">🌶️</span>
+      <div class="av-name">Ye Catarina Restaurant</div>
+      <div class="av-addr">House No. 1, 26, Rua 31 de Janeiro, Sao Tome, Altinho,<br>Panaji- Goa 403001<br><br>📞 +91 9356623710<br>⏰ 12 PM–3:30 PM · 7–11 PM</div>
+      <div class="av-stats">
+        <div class="av-stat"><div class="av-num">4.8★</div><div class="av-label">Google Rating</div></div>
+        <div class="av-stat"><div class="av-num">500+</div><div class="av-label">Customers</div></div>
+        <div class="av-stat"><div class="av-num">15+</div><div class="av-label">Years Open</div></div>
+        <div class="av-stat"><div class="av-num">100%</div><div class="av-label">Fresh Daily</div></div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="section-title">Goa on a <em>Plate.</em></h2>
+      <p class="about-desc">Started in 2008 by a local Goan family, Ye Catarina has been serving authentic home-style Goan food to locals and tourists alike. Every recipe is passed down through generations — cooked fresh daily with no shortcuts.</p>
+      <div class="about-features">
+        <div class="af-row"><div class="af-icon">🐟</div><div><h4>Fresh Catch Daily</h4><p>Fish sourced directly from local fishermen every morning. Never frozen, always fresh.</p></div></div>
+        <div class="af-row"><div class="af-icon">🌶️</div><div><h4>Traditional Recipes</h4><p>All masalas ground in-house using traditional stone grinders. No shortcuts, no shortcuts.</p></div></div>
+        <div class="af-row"><div class="af-icon">👨‍🍳</div><div><h4>Local Goan Cooks</h4><p>Our kitchen team has been cooking together for 10+ years. They know every recipe by heart.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE / CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-eyebrow">Visit Us</div>
+      <h2 class="section-title">Reserve Your <em>Table</em></h2>
+      <p class="contact-desc">Book in advance for dinner — we fill up fast on weekends. Walk-ins welcome for lunch.</p>
+      <div class="contact-items">
+        <div class="ci-row"><div class="ci-icon">📍</div><div><h4>Address</h4><p>House No. 1, 26, Rua 31 de Janeiro, Sao Tome, Altinho,<br>Panaji- Goa 403001</p></div></div>
+        <div class="ci-row"><div class="ci-icon">📞</div><div><h4>Phone</h4><p>+91 9356623710</p></div></div>
+        <div class="ci-row"><div class="ci-icon">⏰</div><div><h4>Hours</h4><p>Lunch: 12:00 PM – 3:30 PM<br>Dinner: 7:00 PM – 11:00 PM</p></div></div>
+        <div class="ci-row"><div class="ci-icon">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/919356623710">Reserve on WhatsApp →</a></p></div></div>
+      </div>
+      <div class="map-ph">📍 Google Maps embed goes here</div>
+    </div>
+    <div class="reserve-form">
+      <h3>Reserve a Table</h3>
+      <p>We'll confirm your booking within 30 minutes</p>
+      <div class="fg"><label>Your Name</label><input type="text" placeholder="Full name" id="f-name"></div>
+      <div class="fg-row">
+        <div class="fg"><label>WhatsApp Number</label><input type="tel" placeholder="+91 XXXXX XXXXX" id="f-phone"></div>
+        <div class="fg"><label>Date</label><input type="date" id="f-date"></div>
+      </div>
+      <div class="fg-row">
+        <div class="fg"><label>Time</label>
+          <select id="f-time">
+            <option value="">Select time</option>
+            <option>Lunch — 12:00 PM</option>
+            <option>Lunch — 1:00 PM</option>
+            <option>Lunch — 2:00 PM</option>
+            <option>Dinner — 7:00 PM</option>
+            <option>Dinner — 8:00 PM</option>
+            <option>Dinner — 9:00 PM</option>
+          </select>
+        </div>
+        <div class="fg"><label>Guests</label>
+          <select id="f-guests">
+            <option>1–2 Guests</option>
+            <option>3–4 Guests</option>
+            <option>5–6 Guests</option>
+            <option>7+ Guests</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Special Request</label><textarea placeholder="e.g. birthday celebration, dietary preference..." id="f-msg"></textarea></div>
+      <button class="form-btn" onclick="submitForm()">Confirm Reservation →</button>
+      <p class="form-note">No advance payment · Free cancellation anytime</p>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/919356623710?text=Hi%2C%20I%20want%20to%20reserve%20a%20table%20at%20Spice%20Garden" class="wa-btn" target="_blank">💬</a>
+
+<footer>
+  <div class="footer-brand">Ye Catarina</div>
+  <p>© 2025 <strong>Ye Catarina Restaurant</strong> · Panaji, North Goa</p>
+  <p>Website by <strong>AutomationOps</strong></p>
+</footer>
+
+<script>
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const date=document.getElementById('f-date').value;
+  const time=document.getElementById('f-time').value;
+  const guests=document.getElementById('f-guests').value;
+  const msg=document.getElementById('f-msg').value;
+  if(!name||!phone||!date||!time){alert('Please fill Name, Phone, Date and Time.');return;}
+  const webhookURL='YOUR_N8N_WEBHOOK_URL_HERE';
+  const payload={name,phone,date,time,guests,message:msg,timestamp:new Date().toISOString(),source:'restaurant-website'};
+  fetch(webhookURL,{method:'POST',headers:{'Content-Type':'application/json','ngrok-skip-browser-warning':'true'},body:JSON.stringify(payload)})
+  .then(r=>{if(r.ok){alert('✅ Table reserved! We will confirm within 30 minutes.');}else{throw new Error();}})
+  .catch(()=>{
+    const m=encodeURIComponent('Table Reservation:\nName: '+name+'\nPhone: '+phone+'\nDate: '+date+'\nTime: '+time+'\nGuests: '+guests);
+    window.open('https://wa.me/919356623710?text='+m,'_blank');
+  });
+}
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.padding=window.scrollY>40?'13px 5%':'18px 5%';
+});
+</script>
+</body>
+</html>
